@@ -1,7 +1,7 @@
 /*
-	Name 1: Isha Chakraborty
+	Name 1: Kushal Vajrala
 	Name 2: Seema Kulkarni
-	UTEID 1: ic8289
+	UTEID 1: kv7287
 	UTEID 2: srk2374
 */
 #include <stdio.h> /* standard input/output library */

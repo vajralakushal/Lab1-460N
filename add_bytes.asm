@@ -45,7 +45,7 @@ NoOverflow
     LEA R4, oflowAdd
     LDB R4, R4, #0; X3103 IN R4
     STB R3, R4, #0; STORING 0 IN X3103
-    B fin
+    B Fin
 
 
 Overflow
@@ -56,7 +56,7 @@ Overflow
     LEA R4, oflowAdd
     LDB R4, R4, #0; X3103 IN R4
     STB R3, R4, #0; STORING 1 IN X3103
-    B fin
+    B Fin
 
 Fin HALT
 num1 .FILL x3100
