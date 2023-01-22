@@ -702,8 +702,9 @@ int main(int argc, char* argv[]) {
 
     /* Reset vars for second parse, set input file reader to the top of the file */
     fclose(infile);
-    //infile = fopen(argv[1], "r");
-    infile = fopen("C:/Users/ishac/Documents/Comp Arch Labs/Lab1/input.asm", "r");
+    
+    infile = fopen(argv[1], "r");
+    //infile = fopen("C:/Users/ishac/Documents/Comp Arch Labs/Lab1/input.asm", "r");
     orig = 0;
     line_counter = 0;
     end = 0;
