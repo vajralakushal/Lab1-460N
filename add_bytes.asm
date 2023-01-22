@@ -1,4 +1,4 @@
-    .ORIG x3000
+  .ORIG x3000
     LEA R0, num1
     LDB R0, R0, #0 ;storing first num in R0
     BRp FirstPos
@@ -7,21 +7,21 @@
 
 SecondNum
     LEA R1, num2
-    LDB R1, R0, #0; BOTH NUMBERS ARE STORED
+    LDB R1, R1, #0; BOTH NUMBERS ARE STORED
     B NoOverflow
 
 FirstPos
     LEA R1, num2
-    LDB R1, R0, #0; BOTH NUMBERS ARE STORED
-    BRzp BothPos ;unsure on condition code checking
-    BRn NoOverflow
+    LDB R1, R1, #0; BOTH NUMBERS ARE STORED
+    BRp BothPos 
+    BRnz NoOverflow
 
 
 FirstNeg
     LEA R1, num2
     LDB R1, R0, #0; BOTH NUMBERS ARE STORED
-    BRnz BothNeg ;unsure on condition code checking
-    BRp NoOverflow
+    BRn BothNeg ;unsure on condition code checking
+    BRpz NoOverflow
 
 
 BothPos
@@ -35,27 +35,26 @@ BothNeg
     BRnz NoOverflow
 
 NoOverflow
-    ;LEA R1, num2
-    ;LDB R1, R1, #0 ; SECOND NUMBER IN R1, FIRST IN R0
-    ADD R2, R1, R0
-    LEA R3, res
-    STB R2, R3, #0; STORING THE RESULT IN X3102
-    LEA R3, noflow
-    LDB R3, R3, #0 ; STORING 0 IN R3
+    LEA R3, res; loads address of res in R3
+    LDB R3, R3, #0; loads R3 with x3102
+    STB R2, R3, #0; stores result of addition in x3102
+    LEA R3, noflow; loads address of noflow in R3
+    LDB R3, R3, #0 ; stores 0 in R3
     LEA R4, oflowAdd
-    LDB R4, R4, #0; X3103 IN R4
-    STB R3, R4, #0; STORING 0 IN X3103
+    LDB R4, R4, #0; x3103 in R4
+    STB R3, R4, #0; stores 0 in X3103
     B Fin
 
 
 Overflow
-    LEA R3, res
-    STB R2, R3, #0; STORING THE RESULT IN X3102
+    LEA R3, res; loads address of res in R3
+    LDB R3, R3, #0; loads R3 with x3102
+    STB R2, R3, #0; stores result of addition in X3102
     LEA R3, yoflow
-    LDB R3, R3, #0 ; STORING 1 IN R3
+    LDB R3, R3, #0 ; stores a 1 in R3
     LEA R4, oflowAdd
-    LDB R4, R4, #0; X3103 IN R4
-    STB R3, R4, #0; STORING 1 IN X3103
+    LDB R4, R4, #0; X3103 in R4
+    STB R3, R4, #0; stores 1 in X3103
     B Fin
 
 Fin HALT
@@ -65,5 +64,3 @@ res .FILL x3102
 oflowAdd .FILL x3103
 yoflow .FILL x1
 noflow .FILL x0
-
-.END
