@@ -599,10 +599,10 @@ void dotfill(char* lArg1, char* lArg2, char* lArg3, char* lArg4) {
 
 int main(int argc, char* argv[]) {
     /* open the source files */
-    //infile = fopen(argv[1], "r");
-    //outfile = fopen(argv[2], "w");
-    infile = fopen("C:/Users/ishac/Documents/Comp Arch Labs/Lab1/input.asm", "r");
-    outfile = fopen("C:/Users/ishac/Documents/Comp Arch Labs/Lab1/output.obj", "w");
+    infile = fopen(argv[1], "r");
+    outfile = fopen(argv[2], "w");
+    //infile = fopen("C:/Users/ishac/Documents/Comp Arch Labs/Lab1/input.asm", "r");
+    //outfile = fopen("C:/Users/ishac/Documents/Comp Arch Labs/Lab1/output.obj", "w");
 
     if (!infile) {
         printf("Error: Cannot open file %s\n", argv[1]);
