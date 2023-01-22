@@ -660,7 +660,10 @@ int main(int argc, char* argv[]) {
                         }
 
                         else { // newLabel is not null, address of associated opcode found!
-                            if (strcmp(lOpcode, ".end") == 0) throwError(2, "invalid opcode");
+                            if (strcmp(lOpcode, ".end") == 0){
+                                throwError(2, "invalid opcode");
+                                printf("\n%s", lOpcode);
+                            }
                             insertLabel(newLabel, line_counter);
                             *newLabel = '\0';
                             continue;
@@ -674,14 +677,23 @@ int main(int argc, char* argv[]) {
                         strcpy(newLabel, lLabel);
                     }
                     else {
-                        if (strcmp(lOpcode, nullstring) == 0) throwError(2, "invalid opcode");
-                        else if (!isOpcode(lOpcode)) throwError(2, "invalid opcode");
+                        if (strcmp(lOpcode, nullstring) == 0){
+                                throwError(2, "invalid opcode");
+                                printf("\n%s", lOpcode);
+                            }
+                        else if (!isOpcode(lOpcode)){
+                                throwError(2, "invalid opcode");
+                                printf("\n%s", lOpcode);
+                            }
                         else throwError(4, "invalid label");
                     }
 
                     // check for opcode
                     if(strcmp(lOpcode, nullstring) != 0) {
-                        if (strcmp(lOpcode, ".end") == 0) throwError(2, "invalid opcode");
+                        if (strcmp(lOpcode, ".end") == 0){
+                                throwError(2, "invalid opcode");
+                                printf("\n%s", lOpcode);
+                            }
                         line_counter = line_counter + 1;
                         insertLabel(newLabel, line_counter);
                         *newLabel = '\0';
@@ -689,7 +701,10 @@ int main(int argc, char* argv[]) {
                     }
                     else { // no opcode, but label was found
                         if (strcmp(lArg1, nullstring) == 0 && strcmp(lArg2, nullstring) == 0 && strcmp(lArg3, nullstring) == 0 && strcmp(lArg4, nullstring) == 0) continue;
-                        else throwError(2, "missing opcode");
+                        else{
+                                throwError(2, "invalid opcode");
+                                printf("\n%s", lOpcode);
+                            }
                     }
                 }
             }
